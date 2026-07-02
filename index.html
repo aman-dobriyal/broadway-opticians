@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadway Opticians — Four Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #17181a;
+    --paper: #f2f1ee;
+    --line: #d8d6d0;
+    --dim: #6d6c68;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Instrument Sans", -apple-system, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: "Spline Sans Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+  header { padding: 56px 5vw 40px; border-bottom: 1px solid var(--line); }
+  header .mono { color: var(--dim); margin-bottom: 18px; }
+  h1 { font-size: clamp(28px, 4vw, 46px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.08; max-width: 18ch; }
+  header p.lede { margin-top: 16px; max-width: 58ch; color: var(--dim); font-size: 15px; line-height: 1.6; }
+  main { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); }
+  .direction {
+    border-bottom: 1px solid var(--line);
+    padding: 36px 5vw 44px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .direction:nth-child(odd) { border-right: 1px solid var(--line); }
+  .direction .head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .direction h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+  .direction .num { color: var(--dim); }
+  .direction p { color: var(--dim); font-size: 14px; line-height: 1.6; max-width: 60ch; }
+  .thumb {
+    display: block; width: 100%; aspect-ratio: 16/9.4; overflow: hidden;
+    border: 1px solid var(--line); background: #fff; border-radius: 2px;
+  }
+  .thumb img { width: 100%; display: block; object-fit: cover; object-position: top; height: 100%; transition: transform 0.5s ease; }
+  .thumb:hover img { transform: scale(1.02); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a {
+    font-family: "Spline Sans Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none; border: 1px solid var(--ink);
+    padding: 9px 16px; border-radius: 99px; transition: background 0.15s, color 0.15s;
+  }
+  .links a:hover { background: var(--ink); color: var(--paper); }
+  .links a:focus-visible, .thumb:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  footer { padding: 32px 5vw 48px; color: var(--dim); font-size: 13px; line-height: 1.7; }
+  @media (prefers-reduced-motion: reduce) { .thumb img { transition: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="mono">Design pitch · July 2026 · Prepared for Broadway Opticians, Mussoorie</div>
+  <h1>One boutique. Four ways to leave the template behind.</h1>
+  <p class="lede">Each direction is a working prototype built on Broadway's real inventory — a landing page, a product page, and the brand-boutique concept shown twice (Gucci and Vysen), where each brand's page dresses itself in that brand's own colors and typography. Open any card to explore it in the browser.</p>
+</header>
+<main>
+  <section class="direction">
+    <div class="head"><h2>The Atelier</h2><span class="mono num">Direction 01</span></div>
+    <p>Sixty-five years of optical craft, told through the optician's own instruments — trial-lens rings, frame measurements, tortoise acetate and bronze rules. Warm, precise, unmistakably a specialist.</p>
+    <a class="thumb" href="01-atelier/index.html"><img src="01-atelier/shots/index-1440.png" alt="The Atelier — landing page preview" loading="lazy"></a>
+    <div class="links">
+      <a href="01-atelier/index.html">Landing</a>
+      <a href="01-atelier/product.html">Product</a>
+      <a href="01-atelier/brand-gucci.html">Gucci page</a>
+      <a href="01-atelier/brand-vysen.html">Vysen page</a>
+    </div>
+  </section>
+  <section class="direction">
+    <div class="head"><h2>Refraction</h2><span class="mono num">Direction 02</span></div>
+    <p>Broadway after dark — a night gallery where frames are exhibited like sculpture and a single beam of light refracts into spectrum. Built for the avant-garde shelf: Kuboraum, Cazal, Gentle Monster.</p>
+    <a class="thumb" href="02-refraction/index.html"><img src="02-refraction/shots/index-1440.png" alt="Refraction — landing page preview" loading="lazy"></a>
+    <div class="links">
+      <a href="02-refraction/index.html">Landing</a>
+      <a href="02-refraction/product.html">Product</a>
+      <a href="02-refraction/brand-gucci.html">Gucci page</a>
+      <a href="02-refraction/brand-vysen.html">Vysen page</a>
+    </div>
+  </section>
+  <section class="direction">
+    <div class="head"><h2>The Mall Road</h2><span class="mono num">Direction 03</span></div>
+    <p>The only luxury eyewear boutique at 2,005 metres. Deodar green, mountain mist and brass vitrines — the story no other optician in the world can tell, told since 1960.</p>
+    <a class="thumb" href="03-mall-road/index.html"><img src="03-mall-road/shots/index-1440.png" alt="The Mall Road — landing page preview" loading="lazy"></a>
+    <div class="links">
+      <a href="03-mall-road/index.html">Landing</a>
+      <a href="03-mall-road/product.html">Product</a>
+      <a href="03-mall-road/brand-gucci.html">Gucci page</a>
+      <a href="03-mall-road/brand-vysen.html">Vysen page</a>
+    </div>
+  </section>
+  <section class="direction">
+    <div class="head"><h2>New Wave</h2><span class="mono num">Direction 04</span></div>
+    <p>Porcelain-white fashion energy — cobalt marquee ribbons, tilted lookbook tiles, lowercase confidence. The youngest direction, tuned to Jacquemus, Off-White and Palm Angels.</p>
+    <a class="thumb" href="04-new-wave/index.html"><img src="04-new-wave/shots/index-1440.png" alt="New Wave — landing page preview" loading="lazy"></a>
+    <div class="links">
+      <a href="04-new-wave/index.html">Landing</a>
+      <a href="04-new-wave/product.html">Product</a>
+      <a href="04-new-wave/brand-gucci.html">Gucci page</a>
+      <a href="04-new-wave/brand-vysen.html">Vysen page</a>
+    </div>
+  </section>
+</main>
+<footer>
+  Every product, price and image in these prototypes is live Broadway inventory.<br>
+  The brand-boutique concept extends to all 60+ brands Broadway carries — Gucci and Vysen are shown as proof.
+</footer>
+</body>
+</html>

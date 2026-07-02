@@ -1,0 +1,6 @@
+tools/
+curated_products.json
+design-data.json
+hub-preview.png
+.DS_Store
+node_modules/
