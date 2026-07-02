@@ -26,9 +26,9 @@
   --v-grey:#F7F7F7;
   --v-hairline:#E1E3E4;
 
-  --disp:'Bricolage Grotesque',sans-serif;
-  --body:'Instrument Sans',sans-serif;
-  --mono:'Spline Sans Mono',monospace;
+  --disp:'Bodoni Moda',Georgia,serif;
+  --body:'EB Garamond',Georgia,serif;
+  --mono:'Jost',Helvetica,Arial,sans-serif;
   --serif:'Cormorant Garamond',serif;
   --jost:'Jost',sans-serif;
   --mont:'Montserrat',sans-serif;
@@ -52,7 +52,7 @@ body{
 }
 img{max-width:100%;display:block;}
 a{color:var(--amber);}
-h1,h2,h3{font-family:var(--disp);font-weight:800;line-height:1.04;letter-spacing:-.01em;margin:0;}
+h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.07;letter-spacing:0;margin:0;}
 p{margin:0;}
 ul{margin:0;padding:0;list-style:none;}
 button{font:inherit;cursor:pointer;}

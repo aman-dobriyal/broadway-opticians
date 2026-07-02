@@ -16,9 +16,9 @@
   --cyan: #55D6DE;
   --amber: #FFB35C;
 
-  --disp: "Archivo", "Arial Black", sans-serif;
-  --body: "Figtree", "Helvetica Neue", sans-serif;
-  --mono: "IBM Plex Mono", "Courier New", monospace;
+  --disp: "Bodoni Moda", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --mono: "Jost", Helvetica, Arial, sans-serif;
 
   --wrap: 1360px;
   --gut: clamp(20px, 4.2vw, 56px);
