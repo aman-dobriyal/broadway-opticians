@@ -20,7 +20,7 @@
   --radius-lg:22px;
   --radius-md:18px;
   --radius-sm:12px;
-  --wrap:1320px;
+  --wrap:2100px;
   --shadow-soft:0 20px 50px -25px rgba(20,19,16,.35);
   --shadow-card:0 14px 34px -18px rgba(20,19,16,.28);
   font-size:16px;
@@ -63,7 +63,7 @@ h1,h2,h3,h4{
 
 :focus-visible{outline:2.5px solid var(--ink);outline-offset:3px;border-radius:4px;}
 
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px;}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,3.2vw,60px);}
 
 /* ============ BUTTONS ============ */
 .btn{
