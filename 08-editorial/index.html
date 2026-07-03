@@ -64,28 +64,52 @@
   <section class="hero-section">
     <div class="wrap">
       <div class="hero-card">
-        <img src="assets/hero.jpg" alt="Moody cinematic portrait of a woman wearing dark sunglasses">
-        <div class="hero-scrim" aria-hidden="true"></div>
-        <div class="hero-inner">
-          <span class="hero-eyebrow">Luxury Eyewear · Since 1960</span>
-          <h1 class="hero-title">Eyewear, <em>Elevated.</em></h1>
-          <p class="hero-sub">Third-generation opticians on the Mall Road, Mussoorie — sixty luxury houses, fitted and dispensed by hand at 2,005 metres in the Himalayan foothills.</p>
-          <div class="hero-ctas">
-            <a class="btn btn-white" href="#new-arrivals">Explore Collection</a>
+        <div class="hero-track">
+          <div class="hero-slide">
+            <img src="assets/hero.jpg" alt="Moody cinematic portrait of a woman wearing dark sunglasses">
+            <div class="hero-scrim" aria-hidden="true"></div>
+            <div class="hero-copy">
+              <span class="hero-eyebrow">Luxury Eyewear · Since 1960</span>
+              <h1 class="hero-title">Eyewear, <em>Elevated.</em></h1>
+              <p class="hero-sub">Third-generation opticians on the Mall Road, Mussoorie — sixty luxury houses, fitted and dispensed by hand at 2,005 metres in the Himalayan foothills.</p>
+              <div class="hero-ctas"><a class="btn btn-white" href="#new-arrivals">Explore Collection</a></div>
+            </div>
           </div>
-          <div class="hero-foot">
-            <div class="hero-proof">
-              <div class="avatar-row">
-                <img src="assets/ed-face.jpg" alt="Broadway customer portrait, close-up">
-                <img src="assets/ed-red.jpg" alt="Broadway customer wearing a red coat and sunglasses">
-                <img src="assets/ed-optical.jpg" alt="Broadway customer wearing optical glasses">
-                <img src="assets/ed-bw.jpg" alt="Broadway customer, black and white fashion portrait">
-              </div>
-              <p class="proof-text"><b>4.9/5 ★</b> (1,234 Reviews)</p>
+          <div class="hero-slide">
+            <img src="assets/ed-duo.jpg" alt="Two models wearing designer sunglasses in an editorial fashion shot">
+            <div class="hero-scrim" aria-hidden="true"></div>
+            <div class="hero-copy">
+              <span class="hero-eyebrow">New Season · 2026</span>
+              <h1 class="hero-title">Faces of <em>the Season.</em></h1>
+              <p class="hero-sub">Gucci, Saint Laurent, Tom Ford and sixty more houses — this season's arrivals, fitted at our bench and worn first on the Mall Road.</p>
+              <div class="hero-ctas"><a class="btn btn-white" href="#new-arrivals">Shop New Arrivals</a></div>
             </div>
-            <div class="hero-dots" aria-hidden="true">
-              <span class="on"></span><span></span><span></span>
+          </div>
+          <div class="hero-slide">
+            <img src="assets/ed-red.jpg" alt="Portrait of a woman in a red coat wearing sunglasses">
+            <div class="hero-scrim" aria-hidden="true"></div>
+            <div class="hero-copy">
+              <span class="hero-eyebrow">Broadway at Home</span>
+              <h1 class="hero-title">Fitted <em>at your door.</em></h1>
+              <p class="hero-sub">Private at-home try-ons and eye-care across Mussoorie — the boutique and the fitting bench, brought to your verandah.</p>
+              <div class="hero-ctas"><a class="btn btn-white" href="tel:+919999972580">Book a Visit</a></div>
             </div>
+          </div>
+        </div>
+        <div class="hero-controls">
+          <div class="hero-proof">
+            <div class="avatar-row">
+              <img src="assets/ed-face.jpg" alt="Broadway customer portrait, close-up">
+              <img src="assets/ed-red.jpg" alt="Broadway customer wearing a red coat and sunglasses">
+              <img src="assets/ed-optical.jpg" alt="Broadway customer wearing optical glasses">
+              <img src="assets/ed-bw.jpg" alt="Broadway customer, black and white fashion portrait">
+            </div>
+            <p class="proof-text"><b>4.9/5 ★</b> (1,234 Reviews)</p>
+          </div>
+          <div class="hero-dots" role="tablist" aria-label="Hero slides">
+            <button class="on" type="button" aria-label="Show slide 1" aria-selected="true"></button>
+            <button type="button" aria-label="Show slide 2" aria-selected="false"></button>
+            <button type="button" aria-label="Show slide 3" aria-selected="false"></button>
           </div>
         </div>
       </div>
@@ -475,15 +499,33 @@
     nlForm.reset();
   });}
 
-  /* hero dots — simple static cycling for visual interest */
-  var dots=[].slice.call(document.querySelectorAll('.hero-dots span'));
-  if(dots.length){
-    var idx=0;
-    setInterval(function(){
-      dots[idx].classList.remove('on');
-      idx=(idx+1)%dots.length;
-      dots[idx].classList.add('on');
-    },4000);
+  /* hero slider — autoplay + pointer/touch swipe + dots */
+  var hTrack=document.querySelector('.hero-track');
+  var hSlides=[].slice.call(document.querySelectorAll('.hero-slide'));
+  var hDots=[].slice.call(document.querySelectorAll('.hero-dots button'));
+  var hCard=document.querySelector('.hero-card');
+  if(hTrack&&hCard&&hSlides.length>1){
+    var hi=0,hn=hSlides.length,hTimer=null;
+    var hReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function hSet(anim){
+      hTrack.style.transition=anim?'':'none';
+      hTrack.style.transform='translateX('+(-hi*100)+'%)';
+      hDots.forEach(function(d,x){d.classList.toggle('on',x===hi);d.setAttribute('aria-selected',x===hi?'true':'false');});
+    }
+    function hGo(k){hi=(k%hn+hn)%hn;hSet(true);}
+    function hStop(){if(hTimer){clearInterval(hTimer);hTimer=null;}}
+    function hStart(){if(hReduce)return;hStop();hTimer=setInterval(function(){hGo(hi+1);},5500);}
+    hDots.forEach(function(d,x){d.addEventListener('click',function(){hGo(x);hStart();});});
+    hCard.addEventListener('mouseenter',hStop);
+    hCard.addEventListener('mouseleave',hStart);
+    var hx0=0,hdx=0,hdrag=false;
+    hCard.addEventListener('pointerdown',function(e){hdrag=true;hx0=e.clientX;hdx=0;hStop();hTrack.style.transition='none';});
+    hCard.addEventListener('pointermove',function(e){if(!hdrag)return;hdx=e.clientX-hx0;hTrack.style.transform='translateX(calc('+(-hi*100)+'% + '+hdx+'px))';});
+    function hUp(){if(!hdrag)return;hdrag=false;if(Math.abs(hdx)>60){hGo(hi+(hdx<0?1:-1));}else{hSet(true);}hStart();}
+    hCard.addEventListener('pointerup',hUp);
+    hCard.addEventListener('pointercancel',hUp);
+    hCard.addEventListener('pointerleave',hUp);
+    hSet(false);hStart();
   }
 })();
 </script>
