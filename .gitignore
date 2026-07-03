@@ -4,3 +4,10 @@ design-data.json
 hub-preview.png
 .DS_Store
 node_modules/
+
+# secrets — never commit
+*.key
+.env
+nvidia.key
+tools/secrets*
+assets/_stock_backup/
